@@ -1,0 +1,65 @@
+Código con while
+from machine import Pin
+import time
+#se conecta la salida y entradas del codigo a while comprendiendo la función de dicho codigo conjunto, en el cual su función es encender un led.
+led_pin = Pin(0, Pin.OUT) # aquí ponemos el contexto para dar la orden de salida en el Pin.
+button_pin = Pin(15, Pin.IN,Pin.PULL_UP)
+
+while True:
+    button_state = button_pin.value()
+    if button_state == 0:
+        led_pin.toggle()
+        # aquí en el while ponemos caracteristicas en el codigo para encender el led.
+
+        Código con IRQ
+        # se define machine e import los cuales son importantes para correr en el programa Thonny, tambien se define timer para poner el tiempo.
+from machine import Pin,Timer
+
+pin_led = Pin(0, mode=Pin.OUT) # definimos cual Pin tendra salida para encender el LED
+pin_button = Pin(15, mode=Pin.IN, pull=Pin.PULL_UP) # En este caso es el Pin 15
+
+def toggle_led(t:Timer):
+    pin_led(not pin_led() and pin_button())
+# Ponemos el Periodo  de 500
+Timer().init(mode=Timer.PERIODIC, period= 500, callback=toggle_led)
+
+Código con PIO
+import time
+import rp2
+from machine import Pin
+# Al igual que los anteriores codigos  tambien definimos el Timer, machine y el Pin de salida
+
+@rp2.asm_pio(set_init=rp2.PIO.OUT_LOW)
+def blink():
+    wrap_target()
+    jmp(pin, "one")
+    set(pins, 1)   [31]
+    label("one")
+    nop()          [31]
+    nop()          [31]
+    nop()          [31]
+    nop()          [31]
+    set(pins, 0)   [31]
+    nop()          [31]
+    nop()          [31]
+    nop()          [31]
+    nop()          [31]
+    wrap()
+
+sm = rp2.StateMachine(0, blink, freq=2000, set_base=Pin(0),jmp_pin=Pin(15))
+sm.active(1)
+
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+
+Primer Ejercicio de Documentación
+1. Comentar el codigo
+2.¿Puede predecir si el Led Parpadea al oprimir el botón?
+**Respuesta/** Si se percive el LED encenderse cuando se presiona el botón.
+3.¿Cualcule el valor de la frecuencia en cada caso.
+**Respuesta/**  La frecuencia de cambio del LED dependerá completamente de cómo interactúa con el botón. Si presiona y suelta rápidamente el botón, el LED cambiará de estado a esa velocidad. Si mantiene presionado el botón, el LED seguirá alternando de estado mientras lo mantiene presionado.
+**Segundo codigo** En el segundo codigo muestra que el periodo es de 500, por ende hallamos la frecuencia dividiendo 1/500 y eso nos entrega 0,002 Hz
+
+**Tercer Codigo** En el Tercer codigo el propio indica que la frecuencia sera de 2000 hz
