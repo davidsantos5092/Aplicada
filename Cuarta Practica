@@ -1,0 +1,24 @@
+En el cuarto Ejercicio El docente realizo un esquema en el cual actuaria como PWM un led cambiando en tiempo el brillo y potencia de dicho led, dicho codigo estara presente a continuación, asi mismo ue graficado, votando una grafica de onda triangular.
+
+
+from machine import Pin , PWM, Timer, ADC
+
+pwm = PWM ( Pin ( 22 ) ) # GP16
+pwm.freq ( 100000 ) # 100kHz
+#pwm.duty_u16 ( 10000 ) # duty 50% (65535/2)
+
+adc = ADC(Pin(26))     # create ADC object on ADC pin
+duty=0
+DUTY_MAX=(2**16)
+
+def from_time_to_time (t):
+    global duty
+    #print(adc.read_u16(),duty ,end=', ')
+    print(adc.read_u16())
+    duty = (duty+4000)%DUTY_MAX
+    pwm.duty_u16(duty)
+
+
+tim = Timer(period=500, mode=Timer.PERIODIC, callback=from_time_to_time)
+
+Con dicho Codigo pusimos en le programa Thonny a graficar la potencia que este llevaba y nos dios resultados triangulados, asi mismo tuvimos datos y valores que estaran presentes ahora: C= 1/0,47ms * 1000 ohmios = 0,47 ms F= 1/0,47ms= 2,12 KHz 210 exp16/4000= 65,53 500 ms=8,192 s
