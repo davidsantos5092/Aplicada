@@ -1,0 +1,10 @@
+En el tercer Ejercicio * el docente puso un codigo un el cual actuaria como PWM un led cambiando en tiempo el brillo y potencia de dicho led, este codgio le hariamos nosotros modificacion en el valor de frecuencia y duty para notar muchas diferencias visibles fisicamente, para ir aprendiendo y avanzando hacia la proxima practica dicho codigo estara presente a continuación:
+from machine import Pin, PWM
+pwm= PWM (Pin (16))
+pwm. freq (8)
+pwm. duty_u16(6500)
+#luego se cambio valores para notar la diferencia en el titileo del led o frecuencia distinta del mismo
+from machine import Pin, PWM
+pwm= PWM (Pin (16))
+pwm. freq (100000)
+pwm. duty_u16(3768)
