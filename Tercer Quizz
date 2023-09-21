@@ -1,0 +1,43 @@
+**Quiz #3** Dado un texto ingresado con input separado con comas e imprimirlos como una lista de latex, dicha lista es [a,b,c,d]
+
+texto_entrada =
+texto_
+input("Ingrese los elementos separados por comas: ")
+
+# Dividir el texto en elementos utilizando la coma como separador
+elementos = texto_entrada.split(',')
+
+# Eliminar espacios en blanco alrededor de cada elemento
+elementos = [elemento.strip()
+elementos = [elemento.strip
+
+elementos = [elemento
+
+elementos = [
+for elemento in elementos]
+
+# Imprimir la lista en formato LaTeX
+print("\\begin{itemize}")
+for elemento in elementos:
+    print("  \\item " + elemento)
+print("\\end{itemize}")
+
+             \begin{itemize}
+  \item a
+  \item b
+  \item c
+  \item d
+\end{itemize}
+
+  \item a
+  \item b
+  \item c
+  \item d
+
+  \item a
+  \item b
+  \item c
+  \item
+
+  \item a
+  \item b
