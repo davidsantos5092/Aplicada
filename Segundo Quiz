@@ -1,0 +1,29 @@
+Quiz #2 Aplicar una función que sume 5 a cada elemento de la lista:
+
+
+def sumar_cinco_a_lista(lista):
+    # Utiliza una comprensión de lista para sumar 5 a cada elemento
+    lista_modificada = [elemento +
+    lista
+5 for elemento in lista]
+
+
+return lista_modificada
+
+# Lista original
+mi_lista = []
+mi_lista = [
+1, -2, -3, 5]
+
+# Llama a la función para sumar 5 a cada elemento
+resultado = sumar_cinco_a_lista(mi_lista)
+
+
+resultado = sumar_cinco_a_lista(mi_lista)
+
+resultado = sumar_cinco_a_lista
+
+resultado =
+# Imprime la lista modificada
+print(resultado)
+
